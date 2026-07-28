@@ -14,6 +14,10 @@ A structured and testable FastAPI backend service with configurable LLM provider
 * Safe HTTP error mapping
 * Automated tests without real network dependencies
 * External HTTP service example with error handling
+* Mini RAG pipeline with document ingestion and retrieval
+* Document chunking and embedding abstraction
+* Minimal vector index and similarity search
+* Context construction with source tracking
 
 ## Project Structure
 
@@ -25,7 +29,18 @@ app/
 ├── exceptions.py
 ├── external_client.py
 ├── main.py
-└── schemas.py
+├── schemas.py
+├── rag/
+│   ├── models.py
+│   ├── loader.py
+│   ├── normalizer.py
+│   ├── chunker.py
+│   ├── embedding.py
+│   ├── vector_index.py
+│   ├── retriever.py
+│   ├── context_builder.py
+│   └── service.py
+
 
 tests/
 ├── test_chat.py
@@ -227,7 +242,7 @@ Internal error details are logged on the server and are not returned directly to
 * No streaming response
 * No conversation memory
 * No authentication for `/chat`
-* No RAG or Agent framework
+* No advanced RAG framework/No Agent framework
 * No application-level retry or circuit breaker
 * Real OpenAI verification requires a valid API key and model access
 
@@ -248,3 +263,19 @@ The Week 1 scope focuses on:
 * Dependency Injection
 * pytest
 * Git and project documentation
+
+## Week 2 Scope
+
+This project was extended with a Mini RAG pipeline as the Week 2 RAG Foundation deliverable.
+
+The Week 2 scope focuses on:
+
+* Document ingestion
+* Text normalization
+* Chunking strategy
+* Embedding abstraction
+* Vector similarity search
+* Retriever design
+* Context construction
+* Grounded answer generation
+* Basic retrieval evaluation

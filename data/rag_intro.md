@@ -1,0 +1,1 @@
+RAG combines retrieval and generation.
