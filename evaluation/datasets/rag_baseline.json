@@ -1,0 +1,30 @@
+{
+    "dataset_name": "rag_baseline_v1",
+    "queries": [
+      {
+        "query_id": "q001",
+        "question": "FastAPI 如何创建 HTTP Endpoint?",
+        "expected_source": "fastapi"
+      },
+      {
+        "query_id": "q002",
+        "question": "FastAPI 如何验证请求参数？",
+        "expected_source": "fastapi"
+      },
+      {
+        "query_id": "q003",
+        "question": "RAG 系统中 Embedding 和 Vector Index 的作用是什么？",
+        "expected_source": "rag"
+      },
+      {
+        "query_id": "q004",
+        "question": "为什么测试时需要隔离外部 API?",
+        "expected_source": "testing"
+      },
+      {
+        "query_id": "q005",
+        "question": "RAG 从 Document 到最终回答经历哪些步骤？",
+        "expected_source": "rag"
+      }
+    ]
+  }

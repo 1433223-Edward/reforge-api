@@ -1,4 +1,5 @@
 import math
+from app.rag.models import Chunk
 
 
 class VectorIndex:
@@ -18,7 +19,7 @@ class VectorIndex:
 
     def add(
         self,
-        chunk: str,
+        chunk: Chunk,
         vector: list[float],
     ):
         """
@@ -26,11 +27,18 @@ class VectorIndex:
         """
 
         self.items.append(
-            {
-                "chunk": chunk,
-                "vector": vector,
-            }
-        )
+        {
+            "chunk_id": chunk.chunk_id,
+
+            "document_id": chunk.document_id,
+
+            "text": chunk.text,
+
+            "metadata": chunk.metadata,
+
+            "vector": vector,
+        }
+    )
 
     def search(
         self,
@@ -51,7 +59,14 @@ class VectorIndex:
 
             results.append(
                 {
-                    "chunk": item["chunk"],
+                    "chunk_id": item["chunk_id"],
+
+                    "document_id": item["document_id"],
+
+                    "text": item["text"],
+
+                    "metadata": item["metadata"],
+
                     "score": score,
                 }
             )

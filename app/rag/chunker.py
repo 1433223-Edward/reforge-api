@@ -1,8 +1,10 @@
+from app.rag.models import Chunk 
 def chunk_text(
     text: str,
+    document_id: str,
     chunk_size: int,
     overlap: int,
-) -> list[str]:
+) -> list[Chunk]:
     """
     将文本切分成多个 chunk。
 
@@ -22,16 +24,32 @@ def chunk_text(
     chunks = []
 
     start = 0
+    chunk_index = 0
 
     while start < len(text):
+
         end = start + chunk_size
 
+        chunk_text_content = text[start:end]
+
+
         chunks.append(
-            text[start:end]
+            Chunk(
+                chunk_id=f"{document_id}_{chunk_index}",
+
+                document_id=document_id,
+
+                text=chunk_text_content,
+
+                metadata={
+                    "position": str(chunk_index),
+                },
+            )
         )
 
-        # 下一段向前移动：
-        # chunk_size - overlap
+
+        chunk_index += 1
+
         start += chunk_size - overlap
 
     return chunks
